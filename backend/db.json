@@ -1,0 +1,91 @@
+{
+  "users": [
+    {
+      "id": "1773895212966",
+      "name": "Test User",
+      "email": "test@example.com",
+      "password": "$2a$10$8SGJzjVDdG5oI7L0icZgqOSwOwAiD/86OsEj2Gp7jyBRAuLsnH7Y.",
+      "userType": "patient",
+      "verified": false,
+      "createdAt": "2026-03-19T04:40:12.966Z"
+    },
+    {
+      "id": "1773895222018",
+      "name": "Another User",
+      "email": "another@example.com",
+      "password": "$2a$10$Up6qD6NtxSG99so1S3teGOAiXC2Rpmm/zbD2ViM5kaA1vBwTeT9dy",
+      "userType": "doctor",
+      "verified": true,
+      "createdAt": "2026-03-19T04:40:22.018Z"
+    },
+    {
+      "id": "1773895254500",
+      "name": "Fresh User",
+      "email": "fresh@example.com",
+      "password": "$2a$10$PfhYhb.ucSY7e1J6rjVi1OQ3bHBrbixnyI75anDfliqLDYXC8SwH6",
+      "userType": "patient",
+      "verified": true,
+      "createdAt": "2026-03-19T04:40:54.500Z"
+    },
+    {
+      "id": "1773895348607",
+      "name": "John",
+      "email": "johnbonard01@gmail.com",
+      "password": "$2a$10$VENtmIn.e6il94ZNn.s3Ue5s/8L7R8ecvOw95GH/rrgguAP5dPP.2",
+      "userType": "patient",
+      "verified": false,
+      "createdAt": "2026-03-19T04:42:28.608Z"
+    },
+    {
+      "id": "1773895726302",
+      "name": "Alert Test",
+      "email": "alert@test.com",
+      "password": "$2a$10$jJuXK2yn5fg3IYQtpgqa3e2AzYG/f3NiCYIj2vTW0HT6kN4D9bPMO",
+      "userType": "patient",
+      "verified": false,
+      "createdAt": "2026-03-19T04:48:46.302Z"
+    },
+    {
+      "id": "1773895744184",
+      "name": "Alert Test",
+      "email": "alert2@test.com",
+      "password": "$2a$10$JKzaNnYAdUDON.PyvHBj7eN2nq7SItzeKdvVvCv.Qc7e/kaKQVMlW",
+      "userType": "patient",
+      "verified": true,
+      "createdAt": "2026-03-19T04:49:04.184Z"
+    },
+    {
+      "id": "1773895884057",
+      "name": "John",
+      "email": "johnadedayo1@gmail.com",
+      "password": "$2a$10$uFwLl/x8D.gGh5mR0gu7huhG6A4KdtnDhZIx2hzMH3JhTQh4rD8W6",
+      "userType": "patient",
+      "verified": true,
+      "createdAt": "2026-03-19T04:51:24.057Z"
+    }
+  ],
+  "otps": {
+    "test@example.com": {
+      "code": "632550",
+      "expiresAt": 1773895812969
+    },
+    "johnbonard01@gmail.com": {
+      "code": "880772",
+      "expiresAt": 1773895948610
+    },
+    "alert@test.com": {
+      "code": "312187",
+      "expiresAt": 1773896326305
+    }
+  },
+  "resetTokens": {
+    "johnbonard01@gmail.com": {
+      "code": "487966",
+      "expiresAt": 1773896580984
+    },
+    "alert2@test.com": {
+      "code": "864099",
+      "expiresAt": 1773896651935
+    }
+  }
+}
