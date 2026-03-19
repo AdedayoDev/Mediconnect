@@ -98,6 +98,7 @@ export async function handleSignup(req) {
       name: newUser.name,
       email: newUser.email,
     },
+    otp,
     message: `OTP sent to ${email}. Use OTP: ${otp}`, // Demo only!
   };
 }
@@ -171,6 +172,7 @@ export async function handleSendOTP(req) {
 
   return {
     success: true,
+    otp,
     message: `OTP sent to ${email}. Use OTP: ${otp}`, // Demo only!
   };
 }
@@ -316,20 +318,17 @@ export function setupMockAPI() {
           try {
             let data;
 
-            if (url.includes("/api/signup") && method === "POST") {
+            if ((url.includes("/api/auth/signup") || url.includes("/api/signup")) && method === "POST") {
               data = await handleSignup({ body });
-            } else if (url.includes("/api/login") && method === "POST") {
+            } else if ((url.includes("/api/auth/login") || url.includes("/api/login")) && method === "POST") {
               data = await handleLogin({ body });
-            } else if (url.includes("/api/send-otp") && method === "POST") {
+            } else if ((url.includes("/api/auth/forgot-password") || url.includes("/api/send-otp")) && method === "POST") {
               data = await handleSendOTP({ body });
-            } else if (url.includes("/api/verify-otp") && method === "POST") {
+            } else if ((url.includes("/api/auth/verify-otp") || url.includes("/api/verify-otp")) && method === "POST") {
               data = await handleVerifyOTP({ body });
-            } else if (
-              url.includes("/api/reset-password") &&
-              method === "POST"
-            ) {
+            } else if ((url.includes("/api/auth/reset-password") || url.includes("/api/reset-password")) && method === "POST") {
               data = await handleResetPassword({ body });
-            } else if (url.includes("/api/user") && method === "GET") {
+            } else if ((url.includes("/api/auth/user") || url.includes("/api/user")) && method === "GET") {
               const token = options.headers?.Authorization?.replace(
                 "Bearer ",
                 "",

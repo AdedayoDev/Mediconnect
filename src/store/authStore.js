@@ -23,6 +23,8 @@ export const useAuthStore = create(
       error: null,
       otpStep: null, // null, 'pending', 'verified'
       resetPasswordEmail: null,
+      isResetPassword: false,
+      otpCode: null,
 
       // Actions
       setLoading: (isLoading) => set({ isLoading }),
@@ -38,7 +40,8 @@ export const useAuthStore = create(
           const data = await apiSignup(credentials);
           set({
             user: data.user,
-            resetPasswordEmail: data.user.email,
+            resetPasswordEmail: null,
+            isResetPassword: false,
             otpStep: "pending",
             isLoading: false,
           });
@@ -78,9 +81,13 @@ export const useAuthStore = create(
           const state = get();
           const email = state.resetPasswordEmail || state.user?.email;
 
+          if (!email) {
+            throw new Error("Missing email for OTP verification");
+          }
+
           const data = await apiVerifyOTP(email, otp);
 
-          const isPasswordReset = !!state.resetPasswordEmail;
+          const isPasswordReset = state.isResetPassword;
 
           set({
             otpStep: "verified",
@@ -88,6 +95,9 @@ export const useAuthStore = create(
             user: data.user,
             isAuthenticated: isPasswordReset ? false : true,
             isLoading: false,
+            resetPasswordEmail: isPasswordReset ? state.resetPasswordEmail : null,
+            isResetPassword: false,
+            otpCode: otp,
           });
           return data;
         } catch (error) {
@@ -105,6 +115,7 @@ export const useAuthStore = create(
           const data = await apiForgotPassword(email);
           set({
             resetPasswordEmail: email,
+            isResetPassword: true,
             otpStep: "pending",
             isLoading: false,
           });
@@ -135,6 +146,7 @@ export const useAuthStore = create(
             resetPasswordEmail: null,
             otpStep: null,
             otpCode: null,
+            isResetPassword: false,
             isLoading: false,
           });
         } catch (error) {
@@ -158,6 +170,7 @@ export const useAuthStore = create(
           token: null,
           otpStep: null,
           resetPasswordEmail: null,
+          isResetPassword: false,
           otpCode: null,
           error: null,
         });
