@@ -77,11 +77,22 @@ export const Landing = () => {
               <MediConnectLogo size={32} />
               <MediConnectLogoText size='text-xl' />
             </div>
-            <div className='flex gap-4'>
-              <Button variant='ghost' onClick={() => navigate("/signin")}>
+            <div className='flex gap-2 md:gap-4 p-2 md:p-0'>
+              <Button
+                variant='ghost'
+                size='sm'
+                onClick={() => navigate("/signin")}
+                className='text-xs md:text-base'
+              >
                 Sign In
               </Button>
-              <Button onClick={() => navigate("/signup")}>Join Now</Button>
+              <Button
+                size='sm'
+                onClick={() => navigate("/signup")}
+                className='text-xs md:text-base'
+              >
+                Join Now
+              </Button>
             </div>
           </div>
         </Container>
